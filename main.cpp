@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
    multimap<string, string> MonMultimap; //on cree un multimap
    string inputWord;
    int i;
+    int wordLength;
 
    if(fichier) //si l'ouverture a réussi
    {
@@ -23,10 +24,11 @@ int main(int argc, char *argv[])
 
        while(getline(fichier, word)) //tant que l'on peut mettre la ligne dans "contenu"
        {
+           wordLength = word.length();
            if (!word.empty() && word[word.size() - 1] == '\r')
                word.erase(word.size() - 1);
            oldWord = word;
-           for(i=0;i<word.length();i++){ //on met tout les caracteres au formats minuscules
+           for(i=0;i<wordLength;i++){ //on met tout les caracteres au formats minuscules
                word[i] = tolower(word[i]);
            }
            sort(word.begin(),word.end()); //on tri les caracteres du mot par ordre croissant pour en obtenir un clé
@@ -37,7 +39,8 @@ int main(int argc, char *argv[])
 
    while(1){
        cin >> inputWord;
-       for(i=0;i<inputWord.length();i++){
+       wordLength = inputWord.length();
+       for(i=0;i<wordLength;i++){
            inputWord[i] = tolower(inputWord[i]);
        }
        sort(inputWord.begin(),inputWord.end());
